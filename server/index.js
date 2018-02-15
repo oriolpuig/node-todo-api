@@ -6,6 +6,7 @@ import cors from 'cors';
 
 import config from './config';
 import dbConnect from './db';
+import getRoutes from './routes';
 const app = express();
 
 // Middlewares
@@ -16,8 +17,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 
+// API Routes
+getRoutes(app);
+
+// DB Initialize
 if (process.env.NODE_ENV === 'test') {
     dbConnect(app, config.test_db, config.test_port);
 } else {
     dbConnect(app, config.db, config.port);
 }
+
+export default app;
