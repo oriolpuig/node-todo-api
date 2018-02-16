@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 export default function (app, db, port) {
     mongoose.connect(db);
 
-    app.listen(port, (err) => {
+    const server = app.listen(port, (err) => {
         if (err) throw err;
         console.log(`App listening on port ${port}`);
     });
@@ -11,4 +11,6 @@ export default function (app, db, port) {
     mongoose.connection.on('connected', () => {
         console.log(`Mongoose default connection open to ${db}`);
     });
+
+    return server;
 };

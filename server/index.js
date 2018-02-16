@@ -8,6 +8,7 @@ import config from './config';
 import dbConnect from './db';
 import getRoutes from './routes';
 const app = express();
+let server = null;
 
 // Middlewares
 app.use(morgan('dev'));
@@ -22,9 +23,12 @@ getRoutes(app);
 
 // DB Initialize
 if (process.env.NODE_ENV === 'test') {
-    dbConnect(app, config.test_db, config.test_port);
+	server = dbConnect(app, config.test_db, config.test_port);
 } else {
-    dbConnect(app, config.db, config.port);
+	server = dbConnect(app, config.db, config.port);
 }
 
-export default app;
+export {
+	app,
+	server,
+};
