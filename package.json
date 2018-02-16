@@ -15,19 +15,32 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
     "cross-env": "^5.1.3",
     "istanbul": "^0.4.5",
     "mocha": "^5.0.1",
+    "nyc": "^11.4.1",
     "should": "^13.2.1",
     "sinon": "^4.3.0",
     "supertest": "^3.0.0"
   },
   "scripts": {
     "start": "node_modules/.bin/nodemon -L --debug ./server --exec babel-node ./server",
-    "test": "cross-env NODE_ENV=test node_modules/.bin/istanbul cover --report=lcov node_modules/mocha/bin/_mocha -- server/**/*.spec.js --compilers js:babel-core/register"
+    "test": "nyc --reporter=lcov cross-env NODE_ENV=test mocha server/**/*.spec.js --exit && npm run show-coverage",
+    "show-coverage": "open coverage/lcov-report/index.html"
   },
   "keywords": [],
   "author": "Oriol Puig <oriol.puig90@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  }
 }
