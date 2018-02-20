@@ -19,6 +19,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(methodOverride());
 
 // API Routes
+app.use(express.static('./dist'));
 getRoutes(app);
 
 // DB Initialize
