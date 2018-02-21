@@ -1,0 +1,332 @@
+[
+  {
+    "description": "In order to confirm the API server is operational\nAs a consumer of the RESTful API\nI want to be able to call the ping API and get a valid back",
+    "keyword": "Feature",
+    "name": "Post a todo",
+    "line": 1,
+    "id": "post-a-todo",
+    "tags": [],
+    "uri": "cucumber/features/post-todo-feature/post-todo.feature",
+    "elements": [
+      {
+        "id": "post-a-todo;post-a-todo",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "Post a todo",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the API server is running",
+            "match": {
+              "location": "cucumber/features/post-todo-feature/support/steps.js:9"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "I ping the server with \"Do a test\"",
+            "match": {
+              "location": "cucumber/features/post-todo-feature/support/steps.js:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 27000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "the reply status parameter should be 1",
+            "match": {
+              "location": "cucumber/features/post-todo-feature/support/steps.js:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "the reply should contain a status 200",
+            "match": {
+              "location": "cucumber/features/post-todo-feature/support/steps.js:45"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "post-a-todo;post-a-todo",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Post a todo",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "the API server is running",
+            "match": {
+              "location": "cucumber/features/post-todo-feature/support/steps.js:9"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "I ping the server with null",
+            "match": {
+              "location": "cucumber/features/post-todo-feature/support/steps.js:23"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "the reply status parameter should be 1",
+            "match": {
+              "location": "cucumber/features/post-todo-feature/support/steps.js:34"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 1000000,
+              "error_message": "AssertionError: expected undefined to be true\n    at CustomWorld.<anonymous> (/Users/oriolpuig/Repositories/test/node-todo-api/cucumber/features/post-todo-feature/support/steps.js:39:38)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "the reply should contain a status 200",
+            "match": {
+              "location": "cucumber/features/post-todo-feature/support/steps.js:45"
+            },
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "In order to do maths\nAs a developer\nI want to increment variables",
+    "keyword": "Feature",
+    "name": "Simple maths",
+    "line": 1,
+    "id": "simple-maths",
+    "tags": [],
+    "uri": "cucumber/features/simple_math/simple_match.feature",
+    "elements": [
+      {
+        "id": "simple-maths;easy-maths",
+        "keyword": "Scenario",
+        "line": 7,
+        "name": "easy maths",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "a variable set to 1",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:4"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "I increment the variable by 1",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:8"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "the variable should contain 2",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:12"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "simple-maths;much-more-complex-stuff",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "much more complex stuff",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "a variable set to 100",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:4"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I increment the variable by 5",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:8"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the variable should contain 105",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:12"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      },
+      {
+        "id": "simple-maths;much-more-complex-stuff",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "much more complex stuff",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "a variable set to 99",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I increment the variable by 1234",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:8"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the variable should contain 1333",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "simple-maths;much-more-complex-stuff",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "much more complex stuff",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "a variable set to 12",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:4"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I increment the variable by 5",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:8"
+            },
+            "result": {
+              "status": "passed"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the variable should contain 17",
+            "match": {
+              "location": "cucumber/features/simple_math/support/steps.js:12"
+            },
+            "result": {
+              "status": "passed"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
