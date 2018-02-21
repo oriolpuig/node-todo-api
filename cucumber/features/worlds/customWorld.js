@@ -12,10 +12,6 @@ class CustomWorld {
     incrementBy(number) {
         this.variable += number;
     }
-    PostTodo(url, todo, cucumber_callback, custom_callback) {
-        console.log('TESTTT!')
-    }
-
 }
 
 setWorldConstructor(CustomWorld);
