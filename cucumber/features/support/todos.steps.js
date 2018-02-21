@@ -7,9 +7,9 @@ var _reply_body;
 var _reply_statusCode;
 var _world = null;
 
-BeforeAll(function() {
+BeforeAll(function () {
     _world = new World();
-})
+});
 
 Given('the API server is running', function (callback) {
     callback();
@@ -22,8 +22,6 @@ When('I request the server with:', function (dataTable, callback) {
     });
 
     _world.PostTodo(_url, json, callback, function (statusCode, json) {
-        console.log('STATUS CODE: ' + statusCode);
-        console.log('STATUS CODE: ' + JSON.stringify(json));
         _reply_body = json;
         _reply_statusCode = statusCode;
         callback();
@@ -32,8 +30,6 @@ When('I request the server with:', function (dataTable, callback) {
 
 When('I request the server with {string}', function (string, callback) {
     _world.PostTodo(_url, { todo: string }, callback, function (statusCode, json) {
-        console.log('STATUS CODE: ' + statusCode);
-        console.log('STATUS CODE: ' + JSON.stringify(json));
         _reply_body = json;
         _reply_statusCode = statusCode;
         callback();
@@ -42,9 +38,16 @@ When('I request the server with {string}', function (string, callback) {
 
 When('I request the server with null', function (callback) {
     _world.PostTodo(_url, null, callback, function (statusCode, json) {
-        console.log('STATUS CODE: ' + statusCode);
-        console.log('STATUS CODE: ' + JSON.stringify(json));
         _reply_body = json;
+        _reply_statusCode = statusCode;
+
+        callback();
+    });
+});
+
+When('I request the server with HttpGet', function (callback) {
+    _world.GetTodos(_url, callback, function (statusCode, json) {
+        _reply_body = JSON.parse(json);
         _reply_statusCode = statusCode;
 
         callback();
@@ -67,7 +70,6 @@ Then('the reply should contain a status {int}', function (status, callback) {
         expect(_reply_statusCode).to.eql(200);
     }
     else {
-        console.log('ERRORRRRRRR: ' + _reply_statusCode)
         expect(_reply_statusCode).to.eql(200);
     }
 

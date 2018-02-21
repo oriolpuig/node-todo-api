@@ -14,7 +14,7 @@ I want to be able to create a todo
             | status | response |
             | 1      | 200      |
 
-    Scenario Outline: Create a todo
+Scenario Outline: Create a todo
         Given the API server is running
         When I request the server with <todo>
         Then the reply status parameter should be <status>
@@ -24,3 +24,4 @@ I want to be able to create a todo
             | todo        | status | response |
             | "Do a test" | 1      | 200      |
             | null        | 0      | 200      |
+
