@@ -35,6 +35,9 @@
     "clean-webpack-plugin": "^0.1.18",
     "copy-webpack-plugin": "^4.4.1",
     "cross-env": "^5.1.3",
+    "cucumber": "^4.0.0",
+    "cucumber-assert": "^2.0.0",
+    "cucumber-html-reporter": "^4.0.1",
     "html-webpack-plugin": "^2.30.1",
     "istanbul": "^0.4.5",
     "mocha": "^5.0.1",
@@ -42,6 +45,7 @@
     "redux-devtools": "^3.4.1",
     "redux-devtools-dock-monitor": "^1.1.3",
     "redux-devtools-log-monitor": "^1.4.0",
+    "request": "^2.83.0",
     "should": "^13.2.1",
     "sinon": "^4.3.0",
     "supertest": "^3.0.0",
@@ -56,7 +60,9 @@
     "start:front": "node_modules/.bin/webpack-dev-server --open --config webpack/webpack.config.dev.js",
     "build:front": "node_modules/.bin/webpack --config webpack/webpack.config.prod.js",
     "test": "nyc --reporter=lcov cross-env NODE_ENV=test mocha server/**/*.spec.js --exit && npm run show-coverage",
-    "show-coverage": "open coverage/lcov-report/index.html"
+    "show-coverage": "open coverage/lcov-report/index.html",
+    "cucumber": "node_modules/.bin/cucumber-js cucumber/features/ -f json:cucumber/report/cucumber_report.json && npm run show-cucumber",
+    "show-cucumber": "node cucumber/report.js"
   },
   "keywords": [],
   "author": "Oriol Puig <oriol.puig90@gmail.com>",
