@@ -14,7 +14,7 @@ class TodoApiWorld {
         this._cucumberCallback = cucumber_callback;
         this._customCallback = custom_callback;
         request({
-            uri: url,
+            uri: this._url,
             method: 'GET',
         }, this._resolveResponses);
     }
@@ -24,8 +24,20 @@ class TodoApiWorld {
         this._cucumberCallback = cucumber_callback;
         this._customCallback = custom_callback;
         request({
-            uri: url,
+            uri: this._url,
             method: 'POST',
+            json: todo
+        }, this._resolveResponses);
+    }
+
+    UpdateTodo(url, todo, cucumber_callback, custom_callback) {
+        this._url = url + '/' + todo._id;
+        this._cucumberCallback = cucumber_callback;
+        this._customCallback = custom_callback;
+
+        request({
+            uri: this._url,
+            method: 'PUT',
             json: todo
         }, this._resolveResponses);
     }

@@ -15,6 +15,15 @@ Given('the API server is running', function (callback) {
     callback();
 });
 
+Given('the API server is running and has todos', function (callback) {
+    _world.GetTodos(_url, callback, function (statusCode, json) {
+        _reply_body = JSON.parse(json);
+        _reply_statusCode = statusCode;
+
+        callback();
+    });
+});
+
 When('I request the server with:', function (dataTable, callback) {
     var json = {};
     dataTable.raw().forEach(function (i) {
@@ -47,6 +56,20 @@ When('I request the server with null', function (callback) {
 
 When('I request the server with HttpGet', function (callback) {
     _world.GetTodos(_url, callback, function (statusCode, json) {
+        _reply_body = JSON.parse(json);
+        _reply_statusCode = statusCode;
+
+        callback();
+    });
+});
+
+When('I request the server with HttpPut', function (callback) {
+    console.log(_reply_body);
+    var first = _reply_body.todos[0];
+    first.completed = !first.completed;
+
+    _world.UpdateTodo(_url, first, callback, function (statusCode, json) {
+        console.log(json);
         _reply_body = JSON.parse(json);
         _reply_statusCode = statusCode;
 
