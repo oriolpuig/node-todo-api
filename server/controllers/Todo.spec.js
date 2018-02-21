@@ -34,6 +34,8 @@ describe('Todo CRUD integration test', () => {
     });
 
     describe('Post a todo', () => {
+        var id = 0;
+
         it('Should allow post a todo and return _id', done => {
             const params = { todo: 'Todo for testing' };
             agent
@@ -41,10 +43,17 @@ describe('Todo CRUD integration test', () => {
                 .send(params)
                 .expect(200)
                 .end((err, result) => {
+                    id = result.body.todo._id;
                     result.body.todo.completed.should.equal(false);
                     result.body.todo.should.have.property('_id');
                     done();
                 });
+        });
+
+        after(done => {
+            agent
+                .delete(`/api/todos/${id}`)
+                .end(done);
         });
     });
 
@@ -93,6 +102,12 @@ describe('Todo CRUD integration test', () => {
                     result.body.status.should.equal(true);
                     done();
                 });
+        });
+
+        after(done => {
+            agent
+                .delete(`/api/todos/${id}`)
+                .end(done);
         });
     })
 });
