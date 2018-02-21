@@ -8,6 +8,7 @@ class TodoList extends Component {
         this.addNewTodo = this.addNewTodo.bind(this);
         this.handleListItemClick = this.handleListItemClick.bind(this);
         this.renderTodos = this.renderTodos.bind(this);
+        this.handleNewTodoClick = this.handleNewTodoClick.bind(this);
     }
 
     componentWillMount() {
@@ -16,11 +17,23 @@ class TodoList extends Component {
 
     handleListItemClick(id, isCompleted) {
         this.props.updateTodo(id, isCompleted)
-            .then(this.props.getTodos());
+            .then(() => {
+                this.props.getTodos();
+            });
     }
 
     handleListItemRemoveClick(id) {
-        this.props.removeTodo(id);
+        this.props.removeTodo(id)
+            .then(() => {
+                this.props.getTodos();
+            });
+    }
+
+    handleNewTodoClick(todo) {
+        this.props.addNewTodo(todo)
+            .then(() => {
+                this.props.getTodos();
+            });
     }
 
     renderTodos() {
@@ -36,7 +49,7 @@ class TodoList extends Component {
     }
 
     addNewTodo() {
-        return <TodoForm onSubmitClick={(todo) => this.props.addNewTodo(todo)} />
+        return <TodoForm onSubmitClick={(todo) => this.handleNewTodoClick(todo)} />
     }
 
     render() {
